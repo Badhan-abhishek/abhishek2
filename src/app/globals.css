@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.section {
+		@apply h-screen pt-[50px] text-white;
+	}
+}
