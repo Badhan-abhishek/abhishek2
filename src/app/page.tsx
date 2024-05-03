@@ -3,21 +3,12 @@
 import Link from "next/link";
 
 import { AnimateHeading, Heading } from "@/components/typography";
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ContactConstants } from "@/lib/contact_constants";
-import { BiCheck } from "react-icons/bi";
-import {
-  BsArrowUpRight,
-  BsArrowUpRightSquare,
-  BsClipboard,
-  BsEnvelope,
-  BsGithub,
-  BsTwitterX,
-} from "react-icons/bs";
-
-const buttonAnimateCsx = "text-white cursor-pointer hover:bg-primary";
+import { BsArrowUpRight, BsList } from "react-icons/bs";
+import { cn } from "@/lib/utils";
+import { NavItems } from "@/components/nav-items";
 
 const MotionLink = motion(Link);
 
@@ -32,83 +23,45 @@ const linkIconMotion = {
   },
 };
 
+const buttonAnimateCsx = "text-white cursor-pointer hover:bg-primary";
+
 export default function Home() {
-  const [isContactTapped, setIsContactTapped] = useState(false);
-
-  const handleCopyContact = () => {
-    if (typeof window !== "undefined") {
-      navigator.clipboard.writeText(ContactConstants.email);
-      setIsContactTapped(true);
-      setTimeout(() => {
-        setIsContactTapped(false);
-      }, 1000);
-    }
-  };
-
+  const [isNavOpen, setIsNavOpen] = useState(false);
   return (
     <main className="relative">
       <header className="absolute w-screen top-0 left-0 border-b bg-slate-800 border-gray-600 h-[50px] flex justify-between items-center">
         <div className="border-r border-gray-600 px-4 h-full flex items-center bg-primary text-white justify-center cursor-pointer">
           <Heading content="abhishek" clx="text-4xl" />
         </div>
-        <nav className="h-full">
+        <nav className="h-full hidden md:block">
           <ul className="grid grid-cols-3 h-full">
-            <motion.li
-              className={cn(
-                "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out",
-                buttonAnimateCsx,
-              )}
-              onClick={handleCopyContact}
-            >
-              {isContactTapped ? (
-                <span className="flex items-center gap-2 h-full w-full">
-                  <BiCheck />
-                </span>
-              ) : (
-                <motion.span className="flex items-center gap-2 h-full w-full transistion-all ease-in-out group">
-                  <BsEnvelope className="group-hover:hidden" />
-                  <BsClipboard className="hidden group-hover:block" />
-                </motion.span>
-              )}
-            </motion.li>
-            <motion.li
-              className={cn(
-                "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out group",
-                buttonAnimateCsx,
-              )}
-            >
-              <Link
-                target="_blank"
-                className="h-full w-full grid place-content-center"
-                href={ContactConstants.github}
-              >
-                <BsGithub className="group-hover:hidden" />
-                <BsArrowUpRightSquare className="hidden group-hover:block" />
-              </Link>
-            </motion.li>
-            <motion.li
-              className={cn(
-                "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out group",
-                buttonAnimateCsx,
-              )}
-            >
-              <Link
-                className="h-full w-full grid place-content-center"
-                target="_blank"
-                href={ContactConstants.x}
-              >
-                <BsTwitterX className="group-hover:hidden" />
-                <BsArrowUpRightSquare className="hidden group-hover:block" />
-              </Link>
-            </motion.li>
+            <NavItems />
           </ul>
+        </nav>
+        <nav className="h-full md:hidden block relative">
+          <ul className="grid grid-cols-1 h-full">
+            <li
+              className={cn(
+                "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out group",
+                buttonAnimateCsx,
+              )}
+              onClick={() => setIsNavOpen(!isNavOpen)}
+            >
+              <BsList />
+            </li>
+          </ul>
+          {isNavOpen ? (
+            <ul className="absolute top-[52px] min-w-fit grid grid-rows-3 border-b border-gray-600">
+              <NavItems />
+            </ul>
+          ) : null}
         </nav>
       </header>
       <section className="section grid place-content-center">
-        <div>
+        <div className="px-2 md:px-0">
           <AnimateHeading
             content="I make software"
-            clx="text-white text-7xl"
+            clx="text-white text-4xl md:text-7xl"
             staggerInitalCtrl={0.5}
           />
           <MotionLink
@@ -120,7 +73,7 @@ export default function Home() {
           >
             <AnimateHeading
               content="@ Cuilsoft"
-              clx="text-primary text-7xl"
+              clx="text-primary text-4xl md:text-7xl"
               staggerInitalCtrl={1.5}
             />
             <motion.span variants={linkIconMotion}>
