@@ -4,6 +4,6 @@
 
 @layer components {
 	.section {
-		@apply h-screen pt-[50px] text-white;
+		@apply pt-[50px] py-12 text-white; /* Removed h-screen, adjusted padding */
 	}
 }
