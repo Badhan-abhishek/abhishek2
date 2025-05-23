@@ -2,16 +2,7 @@ import { ContactConstants } from "@/lib/contact_constants";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
-
-import { BiCheck } from "react-icons/bi";
-import {
-  BsArrowUpRightSquare,
-  BsClipboard,
-  BsEnvelope,
-  BsGithub,
-  BsTwitterX,
-} from "react-icons/bs";
+import { BsGithub, BsTwitterX } from "react-icons/bs";
 
 const buttonAnimateCsx =
   "text-white cursor-pointer hover:bg-primary h-[50px] w-[50px]";
@@ -22,46 +13,58 @@ export const NavItems = () => {
       <motion.li
         className={cn(
           "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out group",
-          buttonAnimateCsx,
+          buttonAnimateCsx
         )}
       >
-        <Link
-          href="/"
-          className="h-full w-full grid place-content-center"
-        >
+        <Link href="/" className="h-full w-full grid place-content-center">
           Home
         </Link>
       </motion.li>
       <motion.li
         className={cn(
           "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out group",
-          buttonAnimateCsx,
+          buttonAnimateCsx
         )}
       >
-        <Link
-          href="/projects"
-          className="h-full w-full grid place-content-center"
-        >
+        <Link href="/about" className="h-full w-full grid place-content-center">
+          About
+        </Link>
+      </motion.li>
+      <motion.li
+        className={cn(
+          "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out group",
+          buttonAnimateCsx
+        )}
+      >
+        {/* This is now the Projects link, the Home link was moved up */}
+        <Link href="/projects" className="h-full w-full grid place-content-center">
           Projects
         </Link>
       </motion.li>
       <motion.li
         className={cn(
           "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out group",
-          buttonAnimateCsx,
+          buttonAnimateCsx
         )}
       >
-        <Link
-          href="/contact"
-          className="h-full w-full grid place-content-center"
-        >
+        <Link href="/projects" className="h-full w-full grid place-content-center">
+          Projects
+        </Link>
+      </motion.li>
+      <motion.li
+        className={cn(
+          "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out group",
+          buttonAnimateCsx
+        )}
+      >
+        <Link href="/contact" className="h-full w-full grid place-content-center">
           Contact
         </Link>
       </motion.li>
       <motion.li
         className={cn(
           "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out group",
-          buttonAnimateCsx,
+          buttonAnimateCsx
         )}
       >
         <Link
@@ -75,7 +78,7 @@ export const NavItems = () => {
       <motion.li
         className={cn(
           "border-l border-gray-600 px-4 flex items-center justify-center transistion-all ease-in-out group",
-          buttonAnimateCsx,
+          buttonAnimateCsx
         )}
       >
         <Link

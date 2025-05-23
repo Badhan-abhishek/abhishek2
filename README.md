@@ -7,4 +7,3 @@ This portfolio showcases my skills and projects as a software developer. It's bu
 * Next.js
 * TypeScript
 * Tailwind CSS
-
